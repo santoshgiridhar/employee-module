@@ -37,3 +37,5 @@
         </tbody>
     </table>
 </grid-component>
+
+<a href="/add-employee" class="btn btn-primary btn-custom-small" title="Add/Edit Employee">Add/Edit Employee</a>
