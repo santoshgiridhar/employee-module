@@ -1,0 +1,39 @@
+<can-import from="grid-component/src/styled" />
+
+<ul class="breadcrumb">
+    <li class="active">Employee List</li>
+</ul>
+
+<grid-component
+                rows="{data}"
+                visible-rows="{visibleRows}"
+                checked-rows="{checkedRows}">
+    <table>
+        <thead>
+            <tr>
+                <th class="cell-checkbox">
+                    <input type="checkbox" {($checked)}="isHeaderChecked">
+                </th>
+                <th can-click="{sortBy 'employeeCode'}">ID {{{sortArrow 'employeeCode'}}}</th>
+                <th can-click="{sortBy 'firstName'}">FirstName {{{sortArrow 'firstName'}}}</th>
+                <th can-click="{sortBy 'lastName'}">LastName {{{sortArrow 'lastName'}}}</th>
+                <th can-click="{sortBy 'phoneNumber'}">Mobile {{{sortArrow 'phoneNumber'}}}</th>
+                <th can-click="{sortBy 'emailAddress'}">Email {{{sortArrow 'emailAddress'}}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each rows}}
+                <tr class="{{#if isHidden}}hidden{{/if}}">
+                    <td class="cell-checkbox">
+                        <input type="checkbox" {($checked)}="isChecked" {{#isDisabled}} disabled {{/isDisabled}} {{data "row"}}>
+                    </td>
+                    <td>{{employeeCode}}</td>
+                    <td>{{firstName}}</td>
+                    <td>{{lastName}}</td>
+                    <td>{{phoneNumber}}</td>
+                    <td>{{emailAddress}}</td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</grid-component>
