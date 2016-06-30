@@ -18,20 +18,20 @@ var ApplicationViewModel = can.Map.extend({
             remove(){
                 this.removeAttr('employee');
             }
-        },
-        employee: {
-            value: new Employee(),
-            get(lastSetVal, setVal){
-                let slug = this.attr('employeeSlug');
-                if (slug) {
-                    Employee.findAll({employeeCode: slug}).then(response => {
-                        if (response.Employees.length) {
-                            setVal(response.Employees[0]);
-                        }
-                    });
-                }
-            }
-        }
+        }//,
+        // employee: {
+        //     value: new Employee(),
+        //     get(lastSetVal, setVal){
+        //         let slug = this.attr('employeeSlug');
+        //         if (slug) {
+        //             Employee.findAll({employeeCode: slug}).then(response => {
+        //                 if (response.Employees.length) {
+        //                     setVal(response.Employees[0]);
+        //                 }
+        //             });
+        //         }
+        //     }
+        // }
     }
 });
 
