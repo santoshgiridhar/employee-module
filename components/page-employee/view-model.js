@@ -7,9 +7,16 @@ export default can.Map.extend({
     define: {
         data: {
             value: []
+        },
+        checkedRows: {
+            set: function(data) {
+                this.attr('isEditable', (data.length > 1) ? true : false);
+                return data;
+            }
         }
     },
-    checkedRows: [],
+    isEditable: false,
+    employeeSlug: '',
     fetchData: function() {
         var self = this,
             requestOptions = {
@@ -23,10 +30,26 @@ export default can.Map.extend({
             };
 
         DataModel.findAll(requestOptions, function(data) {
-            console.log("data--- ", data);
+            console.info("data--- ", data);
             self.attr('data', data);
         }, function(xhr) {
-            console.log(xhr)
+            console.error(xhr)
         });
+    },
+    addEditEmployee: function() {
+        var self = this,
+            checkedRow = self.attr('checkedRows'),
+            employeeID = '';
+        if (checkedRow.length) {
+            //TODO: Navigate to Edit Employee Screen with selected EmployeeID
+            employeeID = checkedRow[0].employeeCode;
+            // can.route.attr('page', 'addEmployee');
+            // can.route.attr('id', employeeID);
+            can.route({'id',employeeID});
+            can.route({'page','addEmployee'});
+            // can.route.link({type: "addEmployee", id: employeeID});
+        } else {
+            can.route.attr('page', 'addEmployee');
+        }
     }
 });

@@ -10,7 +10,7 @@ can.Component.extend({
     template: template,
     events: {
         'inserted': function() {
-            console.log('loaded add employee');
+            console.log('loaded add (or) edit employee screen');
         }
     }
 });

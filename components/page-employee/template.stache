@@ -38,4 +38,8 @@
     </table>
 </grid-component>
 
-<a href="/add-employee" class="btn btn-primary btn-custom-small" title="Add/Edit Employee">Add/Edit Employee</a>
+
+<button type="button" can-click="addEditEmployee" class="btn btn-primary btn-custom-small" {{#if isEditable}} disabled="disabled"{{/if}}  title="Add/Edit Employee">
+  Add/Edit Employee
+</button>
+<!-- <a href="/addEmployee" class="btn btn-primary btn-custom-small" title="Add/Edit Employee">Add/Edit Employee</a> -->

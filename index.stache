@@ -1,2 +1,9 @@
 <!-- Login page - Initial Load -->
-<page-employee></page-employee>
+{{#switch page}}
+    {{#case "employee"}}
+        <page-employee></page-employee>
+    {{/case}}
+    {{#case "addEmployee"}}
+        <add-employee></add-employee>
+    {{/case}}
+{{/switch}}

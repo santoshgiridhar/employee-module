@@ -24,8 +24,10 @@ can.route.map(appViewModel);
 
 // Each element that will be set on the app-state must be preceded by a colon
 // Also, set a default value for page (the login page)
+
+can.route('addEmployee/:employeeSlug', {page: 'addEmployee'});
 can.route(':page');
-can.route(':page/:color');
+can.route('', {page: 'employee'});
 
 // Initialize routing
 can.route.ready();

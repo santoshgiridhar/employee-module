@@ -4,11 +4,16 @@ import 'can/map/define/';
 
 var ApplicationViewModel = can.Map.extend({
     define: {
-        page: {
-            type: 'string'
+        '*': {
+            serialize: false
         },
-        color: {
-            type: 'string'
+        page: {
+            type: 'string',
+            serialize: true
+        },
+        employeeSlug: {
+            type: 'string',
+            serialize: true
         }
     }
 });
