@@ -1,9 +1,10 @@
+<!-- appState is the root context of this template -->
 <!-- Login page - Initial Load -->
 {{#switch page}}
     {{#case "employee"}}
         <page-employee></page-employee>
     {{/case}}
     {{#case "addEmployee"}}
-        <add-employee></add-employee>
+        <add-employee {(employee)}="employee"></add-employee>
     {{/case}}
 {{/switch}}

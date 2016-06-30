@@ -1,7 +1,7 @@
 import can from 'can/';
 import 'can/util/fixture/';
 
-function getData() {
+function getData(params) {
     var data = {
         "Employees": [{
             "userId": "rirani",
@@ -35,6 +35,12 @@ function getData() {
             "emailAddress": "tomhanks@gmail.com"
         }]
     };
+    console.log('params', params);
+    if (params.employeeCode) {
+        data.Employees = data.Employees.filter(employee => {
+            return employee.employeeCode === params.employeeCode;
+        })
+    }
     return data;
 }
 
@@ -56,8 +62,8 @@ var url = '/ListAll';
 can.fixture('GET ' + url, function(params) {
     console.log('FIXTURE: ' + url);
     //var params = JSON.parse(options.data);
-    console.log(getData());
-    return getData();
+    // console.log(getData(params.data));
+    return getData(params.data);
 });
 
 // var url = '/get/E3';

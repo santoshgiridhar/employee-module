@@ -13,6 +13,7 @@ var Model = can.Model.extend({
     return $.ajax({
       url: '/ListAll',
       type: 'GET',
+      data: params,
       datatype:'json',
       contentType: 'application/json; charset=utf-8'
     });
