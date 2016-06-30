@@ -7,6 +7,12 @@ export default can.Map.extend({
     define: {
         data: {
             value: []
+        },
+        employeeSlug : {
+          get: function(){
+            console.log(can.route.attr());
+            console.log(this.attr('employeeSlug'));
+          }
         }
     }
 });
