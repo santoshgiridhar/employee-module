@@ -43,11 +43,9 @@ export default can.Map.extend({
         if (checkedRow.length) {
             //TODO: Navigate to Edit Employee Screen with selected EmployeeID
             employeeID = checkedRow[0].employeeCode;
-            // can.route.attr('page', 'addEmployee');
-            // can.route.attr('id', employeeID);
-            can.route({'id',employeeID});
-            can.route({'page','addEmployee'});
-            // can.route.link({type: "addEmployee", id: employeeID});
+            can.route.attr({id: employeeID});
+            can.route.attr({page:'addEmployee', id: employeeID});
+            console.log(can.route.attr());
         } else {
             can.route.attr('page', 'addEmployee');
         }

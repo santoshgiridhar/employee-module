@@ -11,6 +11,9 @@ can.Component.extend({
     events: {
         'inserted': function() {
             console.log('loaded add (or) edit employee screen');
+        },
+        'can.route change': function(ev, newVal, oldVal) {
+            console.log('The hash\'s id changed.');
         }
     }
 });
