@@ -38,14 +38,17 @@ export default can.Map.extend({
     },
     addEditEmployee: function() {
         var self = this,
-            checkedRow = self.attr('checkedRows'),
-            employeeID = '';
-        if (checkedRow.length) {
+            employee = self.attr('checkedRows.0');
+
+        if (employee) {
             //TODO: Navigate to Edit Employee Screen with selected EmployeeID
-            employeeID = checkedRow[0].employeeCode;
-            can.route.attr({employeeSlug: employeeID});
-            can.route.attr({page:'addEmployee'});
+            can.route.attr({
+                employeeSlug: employee.employeeCode,
+                employee,
+                page: 'addEmployee'
+            }, true);
             console.log(can.route.attr());
+
         } else {
             can.route.attr('page', 'addEmployee');
         }
