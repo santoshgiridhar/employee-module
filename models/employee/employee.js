@@ -18,15 +18,16 @@ var Model = can.Model.extend({
       contentType: 'application/json; charset=utf-8'
     });
   }
-	// ,
-  // findOne: function(params){
-  //   return $.ajax({
-  //     url: '/get/E3',
-  //     type: 'GET',
-  //     datatype:'json',
-  //     contentType: 'application/json; charset=utf-8'
-  //   });
-  // }
+	,
+  findOne: function(params){
+    return $.ajax({
+      url: params.url,
+			data: params,
+      type: 'GET',
+      datatype:'json',
+      contentType: 'application/json; charset=utf-8'
+    });
+  }
 
 }, {});
 

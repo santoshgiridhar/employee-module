@@ -30,7 +30,7 @@ export default can.Map.extend({
             };
 
         DataModel.findAll(requestOptions, function(data) {
-            console.info("data--- ", data);
+            console.info("FindAll Employee List - ", data);
             self.attr('data', data);
         }, function(xhr) {
             console.error(xhr)
@@ -44,11 +44,8 @@ export default can.Map.extend({
             //TODO: Navigate to Edit Employee Screen with selected EmployeeID
             can.route.attr({
                 employeeSlug: employee.employeeCode,
-                employee,
                 page: 'addEmployee'
             }, true);
-            console.log(can.route.attr());
-
         } else {
             can.route.attr('page', 'addEmployee');
         }

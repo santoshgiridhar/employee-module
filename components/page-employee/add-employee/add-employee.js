@@ -10,7 +10,11 @@ can.Component.extend({
     template: template,
     events: {
         'inserted': function() {
-
+            var hasSlug = this.viewModel['%root'];
+            console.info('isEditable - ', typeof hasSlug.employeeSlug !== 'undefined');
+            if (typeof hasSlug.employeeSlug !== 'undefined') {
+              this.viewModel.fetchEmployeeData({empId: hasSlug.employeeSlug});
+            }
         }
     }
 });

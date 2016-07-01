@@ -53,22 +53,19 @@ function getEmployeeData() {
         "preferredFullName": "Tom Hanks",
         "employeeCode": "E3",
         "region": "CA",
-        "phoneNumber": "408-2222222",
+        "phoneNumber": "408222222",
         "emailAddress": "tomhanks@gmail.com"
     };
 }
 
 var url = '/ListAll';
 can.fixture('GET ' + url, function(params) {
-    console.log('FIXTURE: ' + url);
-    //var params = JSON.parse(options.data);
-    // console.log(getData(params.data));
+    console.info('FIXTURE: ' + url);
     return getData(params.data);
 });
 
-// var url = '/get/E3';
-// can.fixture('GET ' + url, function(params) {
-//     console.log('FIXTURE: ' + url);
-//     //var params = JSON.parse(options.data);
-//     return getEmployeeData();
-// });
+var url = '/get/E3';
+can.fixture('GET ' + url, function(params) {
+    console.info('FIXTURE: ' + url);
+    return getEmployeeData();
+});
