@@ -7,9 +7,6 @@ export default can.Map.extend({
     define: {
         data: {
             value: []
-        },
-        employee: {
-            value: new Employee()
         }
     },
     fetchEmployeeData: function(options = {}) {
