@@ -7,6 +7,16 @@ export default can.Map.extend({
     define: {
         data: {
             value: []
+        },
+        Search: Search,
+        selectedItem: {},
+        valdated: false,
+        employeeName: {
+            get() {
+                return Employee.findAll().then(function(data) {
+                    return data.firstName;
+                });
+            }
         }
     },
     fetchEmployeeData: function(options = {}) {
