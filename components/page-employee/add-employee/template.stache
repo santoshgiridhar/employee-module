@@ -4,12 +4,12 @@
     <li class="active">Employee Details</li>
 </ul>
 <div class="container">
-    <form class="form-horizontal" role="form">
-        <div class="form-group">
+    <form class="form-inline" role="form">
+        <!-- <div class="form-group">
             <label class="control-label col-sm-2" for="email">First Name: </label>
             <div class="col-sm-10">
                 <input type="text" class="form-control" placeholder="Enter First Name" {($value)}="firstName">
-                <!-- <bit-autocomplete model="{employeeName}"></bit-autocomplete> -->
+
             </div>
         </div>
         <div class="form-group">
@@ -29,35 +29,51 @@
             <div class="col-sm-10">
                 <input type="email" class="form-control" placeholder="Enter Email Address" {($value)}="emailAddress">
             </div>
-        </div>
-        <div class="form-group">
-          <select class="form-control" can-value="{fetchEmployeeName}">
-             {{#if employeeName.isResolved}}
-                 {{#employeeName.value}}
-                         <option value="{{userId}}">{{userId}}</option>
-                 {{/employeeName.value}}
-             {{/if}}
-          </select>
-            <select id="sbOne" multiple class="form-control" can-value="pushName">
-              {{#each From}}
-                  <option value="{{firstName}}">{{firstName}}</option>
-              {{/each}}
-            </select>
-        </div>
-        <div class="btn-group-vertical">
-            <input type="button" class="btn btn-primary" can-click="moveRight" value=">" />
-            <input type="button" class="btn btn-primary" can-click="moveLeft" value="<" />
-        </div>
-        <div class="form-group">
-            <select id="sbTwo" multiple class="form-control" can-value="popName"></select>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-                <button type="button" class="btn  btn-primary btn-custom-small" can-click="addEmployee">Add</button>
-                <!-- <button type="button" class="btn btn-default">Cancel</button> -->
-                <a href="{{routeUrl page="employee"}}" class="btn btn-primary btn-custom-small" title="Add/Edit Employee">Cancel</a>
+        </div> -->
 
+            <div class="form-group">
+              <div>
+                <select class="form-control list" can-value="{fetchEmployeeName}">
+                    {{#if employeeName.isResolved}}
+                        {{#employeeName.value}}
+                            <option value="{{userId}}">{{userId}}</option>
+                        {{/employeeName.value}}
+                    {{/if}}
+                </select>
+              </div>
+                <select id="sbOne" multiple class="form-control sbOne" can-value="pushName">
+                    {{#each From}}
+                        <option value="{{firstName}}">{{firstName}}</option>
+                    {{/each}}
+                </select>
             </div>
-        </div>
+            <div class="form-group">
+              <div class="btn-group-vertical">
+                  <input type="button" class="btn btn-primary" can-click="moveRight" value=">" />
+                  <input type="button" class="btn btn-primary" can-click="moveLeft" value="<" />
+              </div>
+            </div>
+            <div class="form-group">
+              <div>
+                <select class="form-control list" can-value="{fetchEmployeeName}">
+                    {{#if employeeName.isResolved}}
+                        {{#employeeName.value}}
+                            <option value="{{userId}}">{{userId}}</option>
+                        {{/employeeName.value}}
+                    {{/if}}
+                </select>
+              </div>
+                <select id="sbTwo" multiple class="form-control sbTwo" can-value="popName"></select>
+            </div>
+
+    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+      <div class="btn-group" role="group" aria-label="First group">
+        <button type="button" class="btn  btn-primary btn-custom-small" can-click="addEmployee">Add</button>
+      </div>
+      <div class="btn-group" role="group" aria-label="First group">
+        <a href="{{routeUrl page="employee"}}" class="btn btn-primary btn-custom-small" title="Add/Edit Employee">Cancel</a>
+      </div>
+    </div>
+
     </form>
 </div>
