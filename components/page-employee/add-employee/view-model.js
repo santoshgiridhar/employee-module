@@ -15,11 +15,11 @@ export default can.Map.extend({
                 });
             }
         },
-        fetchEmployeeName:{
-          set: function(value){
-            this.fetchEmployeeName();
-            return value;
-          }
+        fetchEmployeeName: {
+            set: function(value) {
+                this.fetchEmployeeName();
+                return value;
+            }
         }
     },
     pushName: [],
@@ -27,19 +27,20 @@ export default can.Map.extend({
     From: [],
     To: [],
     NameList: [],
+    selectedNames:[],
     isOpened: true,
-    fetchEmployeeName: function(){
-      var self = this;
-      return Employee
-                  .findAll()
-                  .then(function(data) {
-                    // console.log(data);
-                      self.attr('From', data);
-                      console.log('from- ',self.attr('From'));
-                      return data;
-                  }).fail(function(e) {
-                      console.error(e);
-                  });
+    fetchEmployeeName: function() {
+        var self = this;
+        return Employee
+            .findAll()
+            .then(function(data) {
+                // console.log(data);
+                self.attr('From', data);
+                console.log('from- ', self.attr('From'));
+                return data;
+            }).fail(function(e) {
+                console.error(e);
+            });
     },
     fetchEmployeeData: function(options = {}) {
         var self = this;
@@ -62,31 +63,34 @@ export default can.Map.extend({
                 // lastName: self.attr('lastName'),
                 // phoneNumber: self.attr('phoneNumber'),
                 // emailAddress: self.attr('emailAddress')
-                nameList: self.attr('NameList')
+                nameList: self.attr('selectedNames')
             }
         console.info('Newly Created Employee Obj - ', employeeObj);
 
     },
     moveLeft: function(el) {
-        var self = this,
-            list = self.attr('NameList'),
-            mlist = self.attr('migratedName');
-        console.log('Moving out  Names - ', self.attr('migratedName').attr());
-        _.find(list, function(nlist) {
-            for (var i = 0; i <= mlist.length; i++) {
-                if (nlist === mlist[i]) {
-                    list.pop(mlist[i]);
+        var self = this;
+        var poplist = self.attr('popName');
+        _.find(poplist, function(nlist) {
+            for (var i = 0; i < self.selectedNames.length; i++) {
+                if (nlist === self.selectedNames[i]) {
+                    self.selectedNames.splice(i, 1);
                 }
             }
             return null;
         });
-        console.log('updated list', list);
+        console.log('selectedNames', self.selectedNames);
         self.moveItems('#sbTwo', '#sbOne');
     },
     moveRight: function() {
         var self = this;
         console.log('Moving  Names - ', this.attr('pushName').attr());
-        self.attr('NameList', self.attr('pushName').attr());
+        var pushlist = self.attr('pushName');
+        _.find(pushlist, function(nlist) {
+            self.selectedNames.push(nlist);
+            return null;
+        });
+        console.log('selectedNames', self.selectedNames);
         self.moveItems('#sbOne', '#sbTwo');
     },
     moveItems: function(origin, dest) {
