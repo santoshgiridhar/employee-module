@@ -33,7 +33,7 @@ export default can.Map.extend({
       return Employee
                   .findAll()
                   .then(function(data) {
-                    console.log(data);
+                    // console.log(data);
                       self.attr('From', data);
                       console.log('from- ',self.attr('From'));
                       return data;
@@ -45,7 +45,7 @@ export default can.Map.extend({
         var self = this;
         options.url = '/get/' + options.empId;
         Employee.findOne(options, function(data) {
-            console.info("Find One Data - ", data);
+            // console.info("Find One Data - ", data);
             self.attr('data', data);
             self.attr('firstName', data.firstName);
             self.attr('lastName', data.lastName);
@@ -58,10 +58,11 @@ export default can.Map.extend({
     addEmployee: function() {
         var self = this,
             employeeObj = {
-                firstName: self.attr('firstName'),
-                lastName: self.attr('lastName'),
-                phoneNumber: self.attr('phoneNumber'),
-                emailAddress: self.attr('emailAddress')
+                // firstName: self.attr('firstName'),
+                // lastName: self.attr('lastName'),
+                // phoneNumber: self.attr('phoneNumber'),
+                // emailAddress: self.attr('emailAddress')
+                nameList: self.attr('NameList')
             }
         console.info('Newly Created Employee Obj - ', employeeObj);
 

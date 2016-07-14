@@ -35,7 +35,7 @@ function getData(params) {
             "emailAddress": "tomhanks@gmail.com"
         }]
     };
-    console.log('params', params);
+    // console.log('params', params);
     if (params.employeeCode) {
         data.Employees = data.Employees.filter(employee => {
             return employee.employeeCode === params.employeeCode;
@@ -60,12 +60,12 @@ function getEmployeeData() {
 
 var url = '/ListAll';
 can.fixture('GET ' + url, function(params) {
-    console.info('FIXTURE: ' + url);
+    // console.info('FIXTURE: ' + url);
     return getData(params.data);
 });
 
 var url = '/get/E3';
 can.fixture('GET ' + url, function(params) {
-    console.info('FIXTURE: ' + url);
+    // console.info('FIXTURE: ' + url);
     return getEmployeeData();
 });
