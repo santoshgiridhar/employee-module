@@ -1,5 +1,4 @@
 <!-- <can-import from="bit-autocomplete"/> -->
-<can-import from="multi-select" />
 <ul class="breadcrumb">
     <li><a href="{{routeUrl page="employee"}}">Employee List</a></li>
     <li class="active">Employee Details</li>
