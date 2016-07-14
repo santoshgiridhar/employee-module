@@ -1,4 +1,5 @@
-<can-import from="bit-autocomplete"/>
+<!-- <can-import from="bit-autocomplete"/> -->
+<can-import from="multi-select" />
 <ul class="breadcrumb">
     <li><a href="{{routeUrl page="employee"}}">Employee List</a></li>
     <li class="active">Employee Details</li>
@@ -8,8 +9,8 @@
         <div class="form-group">
             <label class="control-label col-sm-2" for="email">First Name: </label>
             <div class="col-sm-10">
-                <!-- <input type="text" class="form-control" placeholder="Enter First Name" {($value)}="firstName"> -->
-                <bit-autocomplete model="{employeeName}"></bit-autocomplete>
+                <input type="text" class="form-control" placeholder="Enter First Name" {($value)}="firstName">
+                <!-- <bit-autocomplete model="{employeeName}"></bit-autocomplete> -->
             </div>
         </div>
         <div class="form-group">
@@ -29,6 +30,27 @@
             <div class="col-sm-10">
                 <input type="email" class="form-control" placeholder="Enter Email Address" {($value)}="emailAddress">
             </div>
+        </div>
+        <div class="form-group">
+          <select class="form-control" can-value="{fetchEmployeeName}">
+             {{#if employeeName.isResolved}}
+                 {{#employeeName.value}}
+                         <option value="{{userId}}">{{userId}}</option>
+                 {{/employeeName.value}}
+             {{/if}}
+          </select>
+            <select id="sbOne" multiple class="form-control" can-value="pushName">
+              {{#each From}}
+                  <option value="{{firstName}}">{{firstName}}</option>
+              {{/each}}
+            </select>
+        </div>
+        <div class="btn-group-vertical">
+            <input type="button" class="btn btn-primary" can-click="moveRight" value=">" />
+            <input type="button" class="btn btn-primary" can-click="moveLeft" value="<" />
+        </div>
+        <div class="form-group">
+            <select id="sbTwo" multiple class="form-control" can-value="popName"></select>
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">

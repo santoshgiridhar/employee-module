@@ -8,16 +8,38 @@ export default can.Map.extend({
         data: {
             value: []
         },
-        Search: Search,
-        selectedItem: {},
-        valdated: false,
         employeeName: {
             get() {
                 return Employee.findAll().then(function(data) {
-                    return data.firstName;
+                    return data;
                 });
             }
+        },
+        fetchEmployeeName:{
+          set: function(value){
+            this.fetchEmployeeName();
+            return value;
+          }
         }
+    },
+    pushName: [],
+    migratedName: [],
+    From: [],
+    To: [],
+    NameList: [],
+    isOpened: true,
+    fetchEmployeeName: function(){
+      var self = this;
+      return Employee
+                  .findAll()
+                  .then(function(data) {
+                    console.log(data);
+                      self.attr('From', data);
+                      console.log('from- ',self.attr('From'));
+                      return data;
+                  }).fail(function(e) {
+                      console.error(e);
+                  });
     },
     fetchEmployeeData: function(options = {}) {
         var self = this;
@@ -43,5 +65,30 @@ export default can.Map.extend({
             }
         console.info('Newly Created Employee Obj - ', employeeObj);
 
+    },
+    moveLeft: function(el) {
+        var self = this,
+            list = self.attr('NameList'),
+            mlist = self.attr('migratedName');
+        console.log('Moving out  Names - ', self.attr('migratedName').attr());
+        _.find(list, function(nlist) {
+            for (var i = 0; i <= mlist.length; i++) {
+                if (nlist === mlist[i]) {
+                    list.pop(mlist[i]);
+                }
+            }
+            return null;
+        });
+        console.log('updated list', list);
+        self.moveItems('#sbTwo', '#sbOne');
+    },
+    moveRight: function() {
+        var self = this;
+        console.log('Moving  Names - ', this.attr('pushName').attr());
+        self.attr('NameList', self.attr('pushName').attr());
+        self.moveItems('#sbOne', '#sbTwo');
+    },
+    moveItems: function(origin, dest) {
+        $(origin).find(':selected').appendTo(dest);
     }
 });

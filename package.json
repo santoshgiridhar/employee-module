@@ -9,7 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bit-autocomplete": "0.0.1",
     "can": "^2.3.24",
     "grid-component": "^0.5.6",
     "grid-filter": "^0.5.4",
