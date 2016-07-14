@@ -17,7 +17,7 @@ export default can.Map.extend({
         },
         fetchEmployeeName: {
             set: function(value) {
-                this.fetchEmployeeName();
+                this.fetchEmployerName();
                 return value;
             }
         }
@@ -29,7 +29,7 @@ export default can.Map.extend({
     NameList: [],
     selectedNames:[],
     isOpened: true,
-    fetchEmployeeName: function() {
+    fetchEmployerName: function() {
         var self = this;
         return Employee
             .findAll()
